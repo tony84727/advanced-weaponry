@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "advancedweaponry",
+  "name": "Advanced Weaponry",
+  "description": "Advanced Weaponry makes it possible to do war inside Minecraft",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["tony84727"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
