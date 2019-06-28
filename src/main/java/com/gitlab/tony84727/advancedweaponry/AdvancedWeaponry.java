@@ -1,6 +1,6 @@
 package com.gitlab.tony84727.advancedweaponry;
 
-import com.gitlab.tony84727.advancedweaponry.item.Rock;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -17,7 +17,7 @@ public class AdvancedWeaponry
 	public static final String Name = "Advanced Weaponry";
 	public static final String Version  = "0.0.0";
 
-	private static final Rock rock = new Rock();
+	public static CreativeTabs creativeTab;
 
 	@SidedProxy(clientSide = "com.gitlab.tony84727.advancedweaponry.client.ClientProxy", serverSide = "com.gitlab.tony84727.advancedweaponry.CommonProxy")
 	private static CommonProxy proxy;
@@ -36,7 +36,7 @@ public class AdvancedWeaponry
 						.create()
 						.id("rock", 0)
 						.name("rock")
-						.tracker(16, 10, true)
+						.tracker(32, 10, true)
 						.entity(com.gitlab.tony84727.advancedweaponry.entity.Rock.class)
 						.build());
 	}
