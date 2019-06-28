@@ -1,5 +1,6 @@
 package com.gitlab.tony84727.advancedweaponry.item;
 
+import com.gitlab.tony84727.advancedweaponry.entity.EntityRock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -10,9 +11,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class Rock extends Item
+public class ItemRock extends Item
 {
-	public Rock()
+	public ItemRock()
 	{
 		setRegistryName("rock");
 		setUnlocalizedName("rock");
@@ -24,7 +25,7 @@ public class Rock extends Item
 		ItemStack itemStack = player.getHeldItem(handIn);
 		if (!worldIn.isRemote)
 		{
-			final com.gitlab.tony84727.advancedweaponry.entity.Rock projectile = new com.gitlab.tony84727.advancedweaponry.entity.Rock(worldIn, player);
+			final EntityRock projectile = new EntityRock(worldIn, player);
 			projectile.shoot(player, player.rotationPitch, player.rotationYaw, 0, 2, 0);
 			worldIn.spawnEntity(projectile);
 		}

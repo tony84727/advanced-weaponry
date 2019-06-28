@@ -11,7 +11,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber
 public class Items
 {
-	public static final Rock Rock = new Rock();
+	public static final ItemRock Rock = new ItemRock();
 
 	@SubscribeEvent
 	public static void onRegisterItems(RegistryEvent.Register<Item> e)

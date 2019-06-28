@@ -1,6 +1,7 @@
 package com.gitlab.tony84727.advancedweaponry.client;
 
 import com.gitlab.tony84727.advancedweaponry.CommonProxy;
+import com.gitlab.tony84727.advancedweaponry.entity.EntityRock;
 import com.gitlab.tony84727.advancedweaponry.item.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderSnowball;
@@ -11,7 +12,7 @@ public class ClientProxy extends CommonProxy
 {
 	public static void preInit(FMLPreInitializationEvent e)
 	{
-		RenderingRegistry.registerEntityRenderingHandler(com.gitlab.tony84727.advancedweaponry.entity.Rock.class,
+		RenderingRegistry.registerEntityRenderingHandler(EntityRock.class,
 				(manager) -> new RenderSnowball(manager, Items.Rock, Minecraft.getMinecraft().getRenderItem()));
 	}
 }

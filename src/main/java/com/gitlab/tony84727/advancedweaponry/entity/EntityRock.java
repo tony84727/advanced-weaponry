@@ -11,14 +11,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class Rock extends EntityThrowable
+public class EntityRock extends EntityThrowable
 {
-	public Rock(World w)
+	public EntityRock(World w)
 	{
 		super(w);
 	}
 
-	public Rock(World w, EntityLivingBase e)
+	public EntityRock(World w, EntityLivingBase e)
 	{
 		super(w, e);
 	}
