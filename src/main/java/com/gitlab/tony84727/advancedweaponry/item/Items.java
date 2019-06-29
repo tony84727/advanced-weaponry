@@ -13,12 +13,14 @@ public class Items
 {
 	public static final ItemRock Rock = new ItemRock();
 	public static final ItemArrowGrenade ArrowGrenade = new ItemArrowGrenade();
+	public static final ItemCompressedArrow CompressedArrow = new ItemCompressedArrow();
 
 	@SubscribeEvent
 	public static void onRegisterItems(RegistryEvent.Register<Item> e)
 	{
 		registerItem(e.getRegistry(), Rock);
 		registerItem(e.getRegistry(), ArrowGrenade);
+		registerItem(e.getRegistry(), CompressedArrow);
 	}
 
 	private static void registerItem(IForgeRegistry<Item> registry,Item item) {
