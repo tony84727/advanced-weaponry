@@ -1,5 +1,6 @@
 package com.gitlab.tony84727.advancedweaponry;
 
+import com.gitlab.tony84727.advancedweaponry.entity.EntityArrowGrenade;
 import com.gitlab.tony84727.advancedweaponry.entity.EntityRock;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,19 +27,27 @@ public class AdvancedWeaponry
 	@Mod.EventHandler
 	public static void preInit(FMLPreInitializationEvent e)
 	{
-		CommonProxy.preInit(e);
+		proxy.preInit(e);
 	}
 
 	@SubscribeEvent
 	public static void registerEntity(RegistryEvent.Register<EntityEntry> e)
 	{
-		e.getRegistry().register(
+		e.getRegistry().registerAll(
 				EntityEntryBuilder
 						.create()
 						.id("rock", 0)
 						.name("rock")
 						.tracker(32, 10, true)
 						.entity(EntityRock.class)
-						.build());
+						.build(),
+				EntityEntryBuilder
+						.create()
+						.id("arrowGrenade", 1)
+						.name("arrow grenade")
+						.tracker(32, 10, true)
+						.entity(EntityArrowGrenade.class)
+						.build()
+		);
 	}
 }

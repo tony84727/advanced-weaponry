@@ -12,11 +12,13 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class Items
 {
 	public static final ItemRock Rock = new ItemRock();
+	public static final ItemArrowGrenade ArrowGrenade = new ItemArrowGrenade();
 
 	@SubscribeEvent
 	public static void onRegisterItems(RegistryEvent.Register<Item> e)
 	{
 		registerItem(e.getRegistry(), Rock);
+		registerItem(e.getRegistry(), ArrowGrenade);
 	}
 
 	private static void registerItem(IForgeRegistry<Item> registry,Item item) {
