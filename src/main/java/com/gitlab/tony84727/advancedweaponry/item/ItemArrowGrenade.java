@@ -16,6 +16,7 @@ public class ItemArrowGrenade extends Item
 	{
 		setUnlocalizedName("arrow grenade");
 		setRegistryName(AdvancedWeaponry.ModID + ":arrow_grenade");
+		setCreativeTab(AdvancedWeaponry.creativeTab);
 	}
 
 	@Override

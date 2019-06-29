@@ -1,0 +1,14 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "advancedweaponry:items/arrow_grenade"
+	},
+	"variants": {
+		"normal": [
+			{}
+		],
+		"inventory": [
+			{}
+		]
+	}
+}

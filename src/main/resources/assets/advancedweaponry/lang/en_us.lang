@@ -1,2 +1,4 @@
-item.rock.name=Rock
 itemGroup.advancedweaponry=Advanced Weaponry
+item.rock.name=Rock
+item.compressed_arrow.name=Compressed Arrow
+item.arrow_grenade.name=Arrow Grenade
