@@ -18,7 +18,7 @@ public class AdvancedWeaponry
 {
 	public static final String ModID = "advancedweaponry";
 	public static final String Name = "Advanced Weaponry";
-	public static final String Version = "0.0.0";
+	public static final String Version = "0.1.0";
 
 	public static CreativeTabs creativeTab;
 
