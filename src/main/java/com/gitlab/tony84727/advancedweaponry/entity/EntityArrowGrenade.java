@@ -31,10 +31,9 @@ public class EntityArrowGrenade extends Entity
 		this.thrower = thrower;
 		final double pitch = thrower.rotationPitch / 180 * Math.PI;
 		final double yaw = thrower.rotationYaw / 180 * Math.PI;
-		final double x = -MathHelper.sin((float) yaw) * MathHelper.cos((float) pitch) * velocity;
-		final double y = -MathHelper.sin((float) pitch) * velocity;
-		final double z = MathHelper.cos((float) yaw) * MathHelper.cos((float) pitch) * velocity;
-		setVelocity(x, y, z);
+		motionX = -MathHelper.sin((float) yaw) * MathHelper.cos((float) pitch) * velocity;
+		motionY = -MathHelper.sin((float) pitch) * velocity;
+		motionZ = MathHelper.cos((float) yaw) * MathHelper.cos((float) pitch) * velocity;
 		setPosition(thrower.posX, thrower.posY + 1, thrower.posZ);
 		setNoGravity(false);
 		noClip = false;

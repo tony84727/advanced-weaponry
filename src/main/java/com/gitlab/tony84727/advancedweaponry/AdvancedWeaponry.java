@@ -3,6 +3,7 @@ package com.gitlab.tony84727.advancedweaponry;
 import com.gitlab.tony84727.advancedweaponry.entity.EntityArrowGrenade;
 import com.gitlab.tony84727.advancedweaponry.entity.EntityRock;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -28,6 +29,7 @@ public class AdvancedWeaponry
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		proxy.preInit(e);
+		MinecraftForge.EVENT_BUS.register(proxy);
 	}
 
 	@SubscribeEvent

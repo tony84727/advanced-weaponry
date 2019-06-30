@@ -7,7 +7,7 @@ public class ItemCompressedArrow extends Item
 {
 	public ItemCompressedArrow()
 	{
-		setUnlocalizedName("compressed arrow");
+		setUnlocalizedName("compressed_arrow");
 		setRegistryName(AdvancedWeaponry.ModID + ":compressed_arrow");
 		setCreativeTab(AdvancedWeaponry.creativeTab);
 	}
