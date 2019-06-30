@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy
 {
-	public static void preInit(FMLPreInitializationEvent e)
+	public void preInit(FMLPreInitializationEvent e)
 	{
 		AdvancedWeaponry.creativeTab = new CreativeTabs(CreativeTabs.getNextID(), "advancedweaponry")
 		{

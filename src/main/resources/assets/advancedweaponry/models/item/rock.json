@@ -5,6 +5,11 @@
 	},
 	"variants": {
 		"normal": [{}],
-		"inventory": [{}]
+		"inventory": [
+			{}
+		],
+		"ground": [
+			{}
+		]
 	}
 }

@@ -25,7 +25,7 @@ public class AdvancedWeaponry
 	private static CommonProxy proxy;
 
 	@Mod.EventHandler
-	public static void preInit(FMLPreInitializationEvent e)
+	public void preInit(FMLPreInitializationEvent e)
 	{
 		proxy.preInit(e);
 	}

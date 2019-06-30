@@ -6,6 +6,7 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -52,6 +53,7 @@ public class EntityArrowGrenade extends Entity
 			motionZ *= 0.02;
 		}
 		move(MoverType.SELF, motionX, motionY, motionZ);
+		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, -motionX, -motionY, -motionZ);
 		if (--fuse <= 0)
 		{
 			explode();
