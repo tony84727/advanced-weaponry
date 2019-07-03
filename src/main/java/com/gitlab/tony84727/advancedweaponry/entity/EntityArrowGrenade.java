@@ -16,6 +16,7 @@ public class EntityArrowGrenade extends Entity
 	private final static double velocity = 1.2;
 	private final static int arrowCount = 72;
 	private final static double arrowYOffset = 0.5;
+	private final static float arrowSpeed = 0.5f;
 
 	protected EntityLivingBase thrower;
 	private int fuse = 3 * 20;
@@ -72,7 +73,7 @@ public class EntityArrowGrenade extends Entity
 				double z = MathHelper.nextDouble(rand, -1, 1);
 				EntityTippedArrow arrow = new EntityTippedArrow(world, thrower);
 				arrow.setPosition(posX, posY + arrowYOffset, posZ);
-				arrow.shoot(x, y, z, 2, 0);
+				arrow.shoot(x, y, z, arrowSpeed, 0);
 				world.spawnEntity(arrow);
 			}
 		}
