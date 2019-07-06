@@ -6,10 +6,15 @@ import net.minecraft.entity.MoverType;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class EntityArrowGrenade extends Entity
 {
@@ -18,26 +23,35 @@ public class EntityArrowGrenade extends Entity
 	private final static double arrowYOffset = 0.5;
 	private final static float arrowSpeed = 0.5f;
 
+	private final static DataParameter<Integer> FUSE = EntityDataManager.createKey(EntityArrowGrenade.class, DataSerializers.VARINT);
 	protected EntityLivingBase thrower;
-	private int fuse = 3 * 20;
 
 	public EntityArrowGrenade(World world)
 	{
+		this(world, null, 3 * 20);
+	}
+
+	public EntityArrowGrenade(World world, @Nullable EntityLivingBase thrower, int remainingFuse)
+	{
 		super(world);
+		if (thrower != null)
+		{
+			this.thrower = thrower;
+			final double pitch = thrower.rotationPitch / 180 * Math.PI;
+			final double yaw = thrower.rotationYaw / 180 * Math.PI;
+			motionX = -MathHelper.sin((float) yaw) * MathHelper.cos((float) pitch) * velocity;
+			motionY = -MathHelper.sin((float) pitch) * velocity;
+			motionZ = MathHelper.cos((float) yaw) * MathHelper.cos((float) pitch) * velocity;
+			setPosition(thrower.posX, thrower.posY + 1, thrower.posZ);
+		}
+		setNoGravity(false);
+		noClip = false;
+		dataManager.register(FUSE, remainingFuse);
 	}
 
 	public EntityArrowGrenade(World world, EntityLivingBase thrower)
 	{
-		super(world);
-		this.thrower = thrower;
-		final double pitch = thrower.rotationPitch / 180 * Math.PI;
-		final double yaw = thrower.rotationYaw / 180 * Math.PI;
-		motionX = -MathHelper.sin((float) yaw) * MathHelper.cos((float) pitch) * velocity;
-		motionY = -MathHelper.sin((float) pitch) * velocity;
-		motionZ = MathHelper.cos((float) yaw) * MathHelper.cos((float) pitch) * velocity;
-		setPosition(thrower.posX, thrower.posY + 1, thrower.posZ);
-		setNoGravity(false);
-		noClip = false;
+		this(world, thrower, 3 * 20);
 	}
 
 	@Override
@@ -54,10 +68,18 @@ public class EntityArrowGrenade extends Entity
 		}
 		move(MoverType.SELF, motionX, motionY, motionZ);
 		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, -motionX, -motionY, -motionZ);
-		if (--fuse <= 0)
+		if (dataManager.get(FUSE) <= 0)
 		{
 			explode();
 		}
+	}
+
+	@Override
+	public void onEntityUpdate()
+	{
+		super.onEntityUpdate();
+		final int fuse = dataManager.get(FUSE);
+		dataManager.set(FUSE, fuse - 1);
 	}
 
 	private void explode()
