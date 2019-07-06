@@ -11,14 +11,36 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "0.1"
+
+ext {
+    pipelineIID = System.getenv("CI_PIPELINE_IID")
+}
+version = "0.1${pipelineIID.empty ? "" : "-${ext.pipelineIID}"}"
 group = "com.gitlab.tony84727" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "advancedweaponry"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
+task generateModInfo(type: Copy) {
+    inputs.property("version", project.version)
+    from 'src/template/java'
+    into "$buildDir/generated/java"
+    expand version: project.version
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "$buildDir/generated/java"
+        }
+    }
+}
+
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
+compileJava.dependsOn(generateModInfo)
+
 
 minecraft {
     version = "1.12.2-14.23.5.2838"

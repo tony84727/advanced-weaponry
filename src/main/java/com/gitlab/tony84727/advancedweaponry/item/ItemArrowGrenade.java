@@ -1,6 +1,7 @@
 package com.gitlab.tony84727.advancedweaponry.item;
 
 import com.gitlab.tony84727.advancedweaponry.AdvancedWeaponry;
+import com.gitlab.tony84727.advancedweaponry.ModInfo;
 import com.gitlab.tony84727.advancedweaponry.entity.EntityArrowGrenade;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +21,7 @@ public class ItemArrowGrenade extends Item
 	public ItemArrowGrenade()
 	{
 		setUnlocalizedName("arrow_grenade");
-		setRegistryName(AdvancedWeaponry.ModID + ":arrow_grenade");
+		setRegistryName(ModInfo.ModID + ":arrow_grenade");
 		setCreativeTab(AdvancedWeaponry.creativeTab);
 	}
 

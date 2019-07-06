@@ -13,13 +13,9 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 
 @Mod.EventBusSubscriber
-@Mod(modid = AdvancedWeaponry.ModID, name = AdvancedWeaponry.Name, version = AdvancedWeaponry.Version)
+@Mod(modid = ModInfo.ModID, name = ModInfo.Name, version = ModInfo.Version)
 public class AdvancedWeaponry
 {
-	public static final String ModID = "advancedweaponry";
-	public static final String Name = "Advanced Weaponry";
-	public static final String Version = "0.1.0";
-
 	public static CreativeTabs creativeTab;
 
 	@SidedProxy(clientSide = "com.gitlab.tony84727.advancedweaponry.client.ClientProxy", serverSide = "com.gitlab.tony84727.advancedweaponry.CommonProxy")
