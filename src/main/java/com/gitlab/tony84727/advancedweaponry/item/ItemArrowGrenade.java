@@ -8,6 +8,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.CooldownTracker;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
@@ -26,9 +27,14 @@ public class ItemArrowGrenade extends Item
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
 	{
+		final CooldownTracker tracker = playerIn.getCooldownTracker();
 		ItemStack current = playerIn.getHeldItem(handIn);
+		if (tracker.hasCooldown(this))
+		{
+			return new ActionResult<>(EnumActionResult.FAIL, current);
+		}
 		playerIn.setActiveHand(handIn);
-
+		tracker.setCooldown(this, 20 * 3 / 2);
 		return new ActionResult<>(EnumActionResult.SUCCESS, current);
 	}
 
